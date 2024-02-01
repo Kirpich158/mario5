@@ -7,6 +7,8 @@ public class GameOverScript : MonoBehaviour {
     private float _timer;
     private BoxCollider2D _triggerCollider;
 
+    public object Debug { get; internal set; }
+
     void Start() {
         this._triggerCollider = GetComponent<BoxCollider2D>();
         this._timer = -1;
@@ -24,12 +26,11 @@ public class GameOverScript : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D outsider) {
         if (outsider.CompareTag("Player")) {
             this._timer = this.maxTimerVal;
-            // this.RestartTheLevel();
         }
     }
 
     private void RestartTheLevel() {
-        UnityEngine.SceneManagement.Scene currentLvl = SceneManager.GetActiveScene();
+        Scene currentLvl = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentLvl.name);
     }
 }

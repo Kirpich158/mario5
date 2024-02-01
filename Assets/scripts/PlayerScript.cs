@@ -1,12 +1,13 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour {
     public float speed;
     public float jumpMultiplier;
     public int maxJumpCount;
+    public int lives;
 
+    [SerializeField]
+    private GameOverScript goScript;
     private int _jumpCount = 0;
     private Transform _transform;
     private Rigidbody2D _rigidBody;
@@ -23,6 +24,11 @@ public class PlayerScript : MonoBehaviour {
 
     void Update() {
         this._Movement();
+
+        // ==> GAME OVER LOGIC <==
+        if (this.lives == 0) {
+            Debug.Log("GameOver");
+        }
     }
 
     private void _Movement() {
@@ -41,6 +47,13 @@ public class PlayerScript : MonoBehaviour {
         if (hit && _rigidBody.velocity.y <= 0) {
             this._isGrounded = true;
             this._jumpCount = this.maxJumpCount;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Enemy")) {
+            this.lives--;
+            Debug.Log("enemy hitted");
         }
     }
 }
