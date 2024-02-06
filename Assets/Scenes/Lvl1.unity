@@ -4367,7 +4367,7 @@ MonoBehaviour:
   maxJumpCount: 1
   lives: 3
   score: 0
-  rigidBody: {fileID: 1370696611}
+  rigidBody: {fileID: 0}
   goScript: {fileID: 2100224191}
 --- !u!61 &1370696613
 BoxCollider2D:
