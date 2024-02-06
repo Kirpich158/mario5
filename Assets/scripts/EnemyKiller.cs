@@ -11,6 +11,7 @@ public class EnemyKiller : MonoBehaviour
             PlayerScript playerScript = GetComponent<PlayerScript>();
             playerScript.rigidBody.AddForce(transform.up * playerScript.enemyImpulseMultiplier, ForceMode2D.Impulse);
             playerScript.score += 50;
+            Destroy(collision.gameObject);
         }
     }
 }
