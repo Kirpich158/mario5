@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerScript : MonoBehaviour {
     public float speed;
@@ -8,57 +9,57 @@ public class PlayerScript : MonoBehaviour {
     public int maxJumpCount;
     public int lives;
     public int score;
+    public Rigidbody2D rigidBody;
 
     [SerializeField]
     private GameOverScript goScript;
     private int _jumpCount = 0;
-    private Transform _transform;
-    private Rigidbody2D _rigidBody;
     private bool _isGrounded = false;
     readonly float _rayLength = 0.6f;
     private LayerMask _groundLayer;
-    private LayerMask _enemyLayer;
+    private LayerMask _surpriseBoxLayer;
 
     void Start() {
-        _transform = GetComponent<Transform>();
-        _rigidBody = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
         _jumpCount = maxJumpCount;
         _groundLayer = LayerMask.GetMask("ground");
-        _enemyLayer = LayerMask.GetMask("enemy");
+        _surpriseBoxLayer = LayerMask.GetMask("surprise");
     }
 
     void Update() {
-        Movement();
+        // Movement();
 
         // ==> GAME OVER LOGIC <==
         if (lives == 0) {
             Debug.Log("GameOver");
         }
+
+        // jumping
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && _jumpCount > 0) {
+            rigidBody.AddForce(transform.up * jumpMultiplier, ForceMode2D.Impulse);
+            _isGrounded = false;
+            _jumpCount--;
+        }
+    }
+
+    void FixedUpdate() {
+        Movement();
     }
 
     private void Movement() {
         // horizontal movement
-        _transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, 0);
-
-        // jump
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && _jumpCount > 0) {
-            _rigidBody.AddForce(_transform.up * jumpMultiplier, ForceMode2D.Impulse);
-            _isGrounded = false;
-            _jumpCount--;
-        }
+        transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, 0);
 
         // is able to jump on the ground check 
-        RaycastHit2D groundHit = Physics2D.Raycast(_transform.position, Vector2.down, _rayLength, _groundLayer);
-        if (groundHit && _rigidBody.velocity.y <= 0) {
+        RaycastHit2D groundHit = Physics2D.Raycast(transform.position, Vector2.down, _rayLength, _groundLayer);
+        if (groundHit && rigidBody.velocity.y <= 0) {
             _isGrounded = true;
             _jumpCount = maxJumpCount;
         }
 
-        // is jumped on enemy
-        RaycastHit2D enemyHit = Physics2D.Raycast(_transform.position, Vector2.down, _rayLength, _enemyLayer);
-        if (enemyHit) {
-            _rigidBody.AddForce(_transform.up * enemyImpulseMultiplier, ForceMode2D.Impulse);
-            score += 50;
+        RaycastHit2D surpriseBoxHit = Physics2D.Raycast(transform.position, Vector2.up, _rayLength, _surpriseBoxLayer);
+        if (surpriseBoxHit) {
+
         }
     }
 

@@ -489,6 +489,7 @@ GameObject:
   - component: {fileID: 841637567}
   - component: {fileID: 841637570}
   - component: {fileID: 841637571}
+  - component: {fileID: 841637572}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -613,6 +614,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpd: 1.5
+--- !u!61 &841637572
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841637566}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.25}
+  m_EdgeRadius: 0
 --- !u!1 &921599220
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,7 +720,7 @@ TilemapRenderer:
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
-  m_Mode: 0
+  m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
 --- !u!1839735485 &921599223
@@ -4226,6 +4253,7 @@ GameObject:
   - component: {fileID: 1370696611}
   - component: {fileID: 1370696612}
   - component: {fileID: 1370696613}
+  - component: {fileID: 1370696614}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4335,10 +4363,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpMultiplier: 8
-  enemyImpulseMultiplier: 1
+  enemyImpulseMultiplier: 12
   maxJumpCount: 1
   lives: 3
   score: 0
+  rigidBody: {fileID: 1370696611}
   goScript: {fileID: 2100224191}
 --- !u!61 &1370696613
 BoxCollider2D:
@@ -4362,10 +4391,22 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1370696614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370696607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d32ff7653265ce4ebb39ee6e0bc7f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1854769073
 GameObject:
   m_ObjectHideFlags: 0
