@@ -50,11 +50,14 @@ public class PlayerScript : MonoBehaviour {
         // horizontal movement
         transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, 0);
 
-        // is able to jump on the ground check 
-        RaycastHit2D groundHit = Physics2D.Raycast(transform.position, Vector2.down, _rayLength, _groundLayer);
-        if (groundHit && rigidBody.velocity.y <= 0) {
+        // is able to jump on the ground check
+        RaycastHit2D groundHitL = Physics2D.Raycast(new Vector2(transform.position.x - 0.5f, transform.position.y), Vector2.down, _rayLength, _groundLayer);
+        RaycastHit2D groundHitR = Physics2D.Raycast(new Vector2(transform.position.x + 0.5f, transform.position.y), Vector2.down, _rayLength, _groundLayer);
+        if ((groundHitL || groundHitR) && rigidBody.velocity.y <= 0) {
             _isGrounded = true;
             _jumpCount = maxJumpCount;
+            Debug.DrawRay(new Vector2(transform.position.x + 0.5f, transform.position.y), Vector2.down, Color.green);
+            Debug.DrawRay(new Vector2(transform.position.x - 0.5f, transform.position.y), Vector2.down, Color.green);
         }
 
         RaycastHit2D surpriseBoxHit = Physics2D.Raycast(transform.position, Vector2.up, _rayLength, _surpriseBoxLayer);
@@ -66,7 +69,6 @@ public class PlayerScript : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Enemy")) {
             lives--;
-            Debug.Log("enemy hitted");
         }
     }
 }
