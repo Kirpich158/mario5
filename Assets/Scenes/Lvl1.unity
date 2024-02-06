@@ -228,6 +228,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7234747323521302496, guid: a7d58726468a7674489c6b20d51112ba, type: 3}
+      propertyPath: m_Radius
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7234747323521302498, guid: a7d58726468a7674489c6b20d51112ba, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4753,7 +4757,7 @@ GameObject:
   - component: {fileID: 2100224192}
   - component: {fileID: 2100224191}
   m_Layer: 0
-  m_Name: GameOverTrigger
+  m_Name: EndingTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

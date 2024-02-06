@@ -4,28 +4,43 @@ using UnityEngine.SceneManagement;
 public class GameOverScript : MonoBehaviour {
     public float maxTimerVal;
 
-    private float _timer;
-    private BoxCollider2D _triggerCollider;
-
-    public object Debug { get; internal set; }
+    private float _gameOverTimer;
+    private float _enemyTimer;
+    private GameObject _enemyRef;
 
     void Start() {
-        _triggerCollider = GetComponent<BoxCollider2D>();
-        _timer = -1;
+        _gameOverTimer = -1;
+        _enemyTimer = -1;
     }
 
     void Update() {
-        if (_timer > 0) {
-            _timer -= Time.deltaTime;
-        } else if (_timer <= 0 && _timer != -1) {
-            _timer = -1;
+        // game over restart
+        if (_gameOverTimer > 0) {
+            _gameOverTimer -= Time.deltaTime;
+        } else if (_gameOverTimer <= 0 && _gameOverTimer != -1) {
+            _gameOverTimer = -1;
             RestartTheLevel();
+        }
+
+        // enemy despawn timer
+        if (_enemyTimer > 0) {
+            _enemyTimer -= Time.deltaTime;
+        }
+        else if (_enemyTimer <= 0 && _enemyTimer != -1) {
+            _enemyTimer = -1;
+            Destroy(_enemyRef);
+            _enemyRef = null;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D outsider) {
         if (outsider.CompareTag("Player")) {
-            _timer = maxTimerVal;
+            _gameOverTimer = maxTimerVal;
+        }
+
+        if (outsider.CompareTag("Enemy")) {
+            _enemyRef = outsider.gameObject;
+            _enemyTimer = maxTimerVal;
         }
     }
 
