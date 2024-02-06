@@ -10,22 +10,22 @@ public class GameOverScript : MonoBehaviour {
     public object Debug { get; internal set; }
 
     void Start() {
-        this._triggerCollider = GetComponent<BoxCollider2D>();
-        this._timer = -1;
+        _triggerCollider = GetComponent<BoxCollider2D>();
+        _timer = -1;
     }
 
     void Update() {
-        if (this._timer > 0) {
-            this._timer -= Time.deltaTime;
-        } else if (this._timer <= 0 && this._timer != -1) {
-            this._timer = -1;
-            this.RestartTheLevel();
+        if (_timer > 0) {
+            _timer -= Time.deltaTime;
+        } else if (_timer <= 0 && _timer != -1) {
+            _timer = -1;
+            RestartTheLevel();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D outsider) {
         if (outsider.CompareTag("Player")) {
-            this._timer = this.maxTimerVal;
+            _timer = maxTimerVal;
         }
     }
 

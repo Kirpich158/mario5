@@ -1,16 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraScript : MonoBehaviour {
     public GameObject target;
 
-    void Start() {
-        
-    }
-
     void Update() {
-        Vector3 newPos = new Vector3(this.target.transform.position.x, this.target.transform.position.y, this.target.transform.position.z);
-        this.transform.position = new Vector3(newPos.x, newPos.y, this.transform.position.z);
+        Vector3 newPos = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z);
+        transform.position = new Vector3(newPos.x, newPos.y, transform.position.z);
     }
 }

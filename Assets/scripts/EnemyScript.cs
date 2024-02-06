@@ -8,19 +8,19 @@ public class EnemyScript : MonoBehaviour {
     private int _dir = -1;
 
     void Start() {
-        this._transform = GetComponent<Transform>();
-        this._rigidBody = GetComponent<Rigidbody2D>();
+        _transform = GetComponent<Transform>();
+        _rigidBody = GetComponent<Rigidbody2D>();
     }
 
     void Update() {
-        this._transform.Translate(this._dir * Time.deltaTime, 0, 0);
+        _transform.Translate(_dir * Time.deltaTime, 0, 0);
 
-        IsHittedWall();
+        // IsHittedWall();
     }
 
     void IsHittedWall() {
-        if (this._rigidBody.velocity.x <= 0) {
-            this._dir *= -1;
+        if (_rigidBody.velocity.x <= 0) {
+            _dir *= -1;
             // ray dir change
         }
     }

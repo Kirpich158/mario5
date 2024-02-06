@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour {
     public float speed;
     public float jumpMultiplier;
+    public float enemyImpulseMultiplier;
     public int maxJumpCount;
     public int lives;
+    public int score;
 
     [SerializeField]
     private GameOverScript goScript;
@@ -12,47 +15,56 @@ public class PlayerScript : MonoBehaviour {
     private Transform _transform;
     private Rigidbody2D _rigidBody;
     private bool _isGrounded = false;
-    private float _rayLength = 0.6f;
+    readonly float _rayLength = 0.6f;
     private LayerMask _groundLayer;
+    private LayerMask _enemyLayer;
 
     void Start() {
-        this._transform = GetComponent<Transform>();
-        this._rigidBody = GetComponent<Rigidbody2D>();
-        this._jumpCount = this.maxJumpCount;
+        _transform = GetComponent<Transform>();
+        _rigidBody = GetComponent<Rigidbody2D>();
+        _jumpCount = maxJumpCount;
         _groundLayer = LayerMask.GetMask("ground");
+        _enemyLayer = LayerMask.GetMask("enemy");
     }
 
     void Update() {
-        this._Movement();
+        Movement();
 
         // ==> GAME OVER LOGIC <==
-        if (this.lives == 0) {
+        if (lives == 0) {
             Debug.Log("GameOver");
         }
     }
 
-    private void _Movement() {
+    private void Movement() {
         // horizontal movement
-        _transform.Translate(Input.GetAxis("Horizontal") * this.speed * Time.deltaTime, 0, 0);
+        _transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, 0);
 
         // jump
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && this._jumpCount > 0) {
-            this._rigidBody.AddForce(_transform.up * this.jumpMultiplier, ForceMode2D.Impulse);
-            this._isGrounded = false;
-            this._jumpCount--;
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && _jumpCount > 0) {
+            _rigidBody.AddForce(_transform.up * jumpMultiplier, ForceMode2D.Impulse);
+            _isGrounded = false;
+            _jumpCount--;
         }
 
-        // is able to jump check
-        RaycastHit2D hit = Physics2D.Raycast(_transform.position, Vector2.down, this._rayLength, _groundLayer);
-        if (hit && _rigidBody.velocity.y <= 0) {
-            this._isGrounded = true;
-            this._jumpCount = this.maxJumpCount;
+        // is able to jump on the ground check 
+        RaycastHit2D groundHit = Physics2D.Raycast(_transform.position, Vector2.down, _rayLength, _groundLayer);
+        if (groundHit && _rigidBody.velocity.y <= 0) {
+            _isGrounded = true;
+            _jumpCount = maxJumpCount;
+        }
+
+        // is jumped on enemy
+        RaycastHit2D enemyHit = Physics2D.Raycast(_transform.position, Vector2.down, _rayLength, _enemyLayer);
+        if (enemyHit) {
+            _rigidBody.AddForce(_transform.up * enemyImpulseMultiplier, ForceMode2D.Impulse);
+            score += 50;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Enemy")) {
-            this.lives--;
+            lives--;
             Debug.Log("enemy hitted");
         }
     }
