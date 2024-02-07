@@ -1,0 +1,59 @@
+[33mcommit 8e47aa9cae7f54a5e97d1aaf9275aac1b6597f27[m[33m ([m[1;36mHEAD -> [m[1;32mbeta[m[33m, [m[1;31morigin/beta[m[33m)[m
+Author: Kirill_Zub <kirillka.zub@gmail.com>
+Date:   Tue Feb 6 17:34:27 2024 +0100
+
+    added side rays for ground check instead of only middle one
+
+[33mcommit 0327d26b3804295f75035c4cc92c0c6139e1df27[m
+Author: Kirill_Zub <kirillka.zub@gmail.com>
+Date:   Tue Feb 6 13:10:06 2024 +0100
+
+    added enemy destroy on fall and direction change on wall hit
+
+[33mcommit aab6e6dc394492d93fbf2234471011a536e1befb[m
+Author: Kirill_Zub <kirillka.zub@gmail.com>
+Date:   Tue Feb 6 12:51:19 2024 +0100
+
+    added enemy spawning and destroying
+
+[33mcommit 3b66c805b0ea920e6e63279a9caba0ab99caab73[m
+Author: Kirill_Zub <kirillka.zub@gmail.com>
+Date:   Tue Feb 6 12:08:10 2024 +0100
+
+    final enemy killing logic
+
+[33mcommit 9714bcf5d2cc9cc96f1a0c542f707ef94429424b[m
+Author: Kirill_Zub <kirillka.zub@gmail.com>
+Date:   Tue Feb 6 12:04:24 2024 +0100
+
+    colliders work for better feel
+
+[33mcommit 89b1f4e6b23824dde42e0955dbd5d277b5aefacd[m
+Author: Kirill_Zub <kirillka.zub@gmail.com>
+Date:   Tue Feb 6 10:59:47 2024 +0100
+
+    added basic ui to work on it later; cleared this. usage
+
+[33mcommit a9543412c17c30342fbe3ac63678881522d21cc8[m
+Author: Kirill_Zub <kirillka.zub@gmail.com>
+Date:   Thu Feb 1 17:25:37 2024 +0100
+
+    added enemy movement; hp for player and its decreasing on contact with enemy
+
+[33mcommit 4210f756f0f2521b299d7428292ac25f1026a3c6[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Kirill_Zub <kirillka.zub@gmail.com>
+Date:   Thu Feb 1 16:22:30 2024 +0100
+
+    first commit of project's base created in the first days
+
+[33mcommit 3a37a662771d25a05f8a94563cbabde934817d3a[m
+Author: Kirill <44980707+Kirpich158@users.noreply.github.com>
+Date:   Thu Feb 1 15:59:35 2024 +0100
+
+    first commit (updated readme)
+
+[33mcommit 36a3197c4c2e0a86ec68329a9b1692cc91bbf1da[m
+Author: Kirill <44980707+Kirpich158@users.noreply.github.com>
+Date:   Thu Feb 1 15:55:01 2024 +0100
+
+    Initial commit
