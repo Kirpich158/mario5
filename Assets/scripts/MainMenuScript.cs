@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour {
     public CanvasGroup settingsCanvas;
 
     public void OnPlayButton() {
+        SceneManager.LoadScene("Lvl1");
         Debug.Log("play clicked");
     }
 
