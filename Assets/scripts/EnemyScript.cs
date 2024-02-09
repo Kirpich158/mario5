@@ -3,13 +3,13 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour {
     public float moveSpd = 1.5f;
 
+    [SerializeField]
     private Rigidbody2D _rigidBody;
     private int _dir = -1;
     private LayerMask _groundLayer;
     private Vector2 _rayDir;
 
     void Start() {
-        _rigidBody = GetComponent<Rigidbody2D>();
         _groundLayer = LayerMask.GetMask("ground");
         _rayDir = Vector2.left;
     }

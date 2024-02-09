@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpd: 1.5
+  _rigidBody: {fileID: 1599677001162314970}
 --- !u!61 &1599677001162314972
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class EnemyKiller : MonoBehaviour
         if (collision.CompareTag("Enemy")) {
             PlayerScript playerScript = GetComponent<PlayerScript>();
             playerScript.rigidBody.AddForce(transform.up * playerScript.enemyImpulseMultiplier, ForceMode2D.Impulse);
-            playerScript.score += 50;
+            playerScript.Score += 50;
             Destroy(collision.gameObject);
         }
     }

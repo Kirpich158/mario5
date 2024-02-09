@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
 public class PlayerScript : MonoBehaviour {
@@ -8,7 +9,6 @@ public class PlayerScript : MonoBehaviour {
     public float enemyImpulseMultiplier;
     public int maxJumpCount;
     public int lives;
-    public int score;
     public Rigidbody2D rigidBody;
 
     [SerializeField]
@@ -19,8 +19,13 @@ public class PlayerScript : MonoBehaviour {
     private LayerMask _groundLayer;
     private LayerMask _surpriseBoxLayer;
 
+    private int _score;
+    public int Score {
+        get { return _score; }
+        set { _score = value; }
+    }
+
     void Start() {
-        rigidBody = GetComponent<Rigidbody2D>();
         _jumpCount = maxJumpCount;
         _groundLayer = LayerMask.GetMask("ground");
         _surpriseBoxLayer = LayerMask.GetMask("surprise");

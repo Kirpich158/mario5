@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
-        scorePts.text = "Score: " + player.score.ToString();
+        scorePts.text = "Score: " + player.Score.ToString();
         lives.text = "Lives: " + player.lives.ToString();
     }
 }
