@@ -4313,8 +4313,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.2731762, g: 0.990566, b: 0.11681201, a: 1}
+  m_Sprite: {fileID: 21300000, guid: cc0fe23cae44cf14ca2b76fcc32bb99a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4377,8 +4377,8 @@ MonoBehaviour:
   enemyImpulseMultiplier: 12
   maxJumpCount: 1
   lives: 3
-  score: 0
   rigidBody: {fileID: 1370696611}
+  runAnim: {fileID: 0}
   goScript: {fileID: 2100224191}
 --- !u!61 &1370696613
 BoxCollider2D:

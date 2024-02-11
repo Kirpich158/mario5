@@ -11,6 +11,8 @@ public class PlayerScript : MonoBehaviour {
     public int lives;
     public Rigidbody2D rigidBody;
 
+    public Animator runAnim;
+
     [SerializeField]
     private GameOverScript goScript;
     private int _jumpCount = 0;
