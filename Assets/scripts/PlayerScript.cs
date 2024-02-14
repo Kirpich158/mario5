@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
@@ -11,7 +12,7 @@ public class PlayerScript : MonoBehaviour {
     public int lives;
     public Rigidbody2D rigidBody;
 
-    public Animator runAnim;
+    public AnimatorController animControl;
 
     [SerializeField]
     private GameOverScript goScript;
@@ -34,8 +35,6 @@ public class PlayerScript : MonoBehaviour {
     }
 
     void Update() {
-        // Movement();
-
         // ==> GAME OVER LOGIC <==
         if (lives == 0) {
             Debug.Log("GameOver");
@@ -56,7 +55,7 @@ public class PlayerScript : MonoBehaviour {
     private void Movement() {
         // horizontal movement
         transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, 0);
-
+        
         // is able to jump on the ground check
         RaycastHit2D groundHitL = Physics2D.Raycast(new Vector2(transform.position.x - 0.5f, transform.position.y), Vector2.down, _rayLength, _groundLayer);
         RaycastHit2D groundHitR = Physics2D.Raycast(new Vector2(transform.position.x + 0.5f, transform.position.y), Vector2.down, _rayLength, _groundLayer);

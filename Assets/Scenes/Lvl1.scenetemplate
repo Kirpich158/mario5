@@ -17,6 +17,8 @@ MonoBehaviour:
   description: Scene template made from first level of the game
   preview: {fileID: 6480094139405257491}
   dependencies:
+  - dependency: {fileID: 1599677001162314918, guid: 76fcc1a4e5864c648939c6d0dacefe9b, type: 3}
+    instantiationMode: 0
   - dependency: {fileID: 112000000, guid: 40dc7400bdff356459b09efc1229ed4c, type: 2}
     instantiationMode: 0
   - dependency: {fileID: 11400000, guid: b6f0592f712be17409b46dc93637952c, type: 2}
@@ -29,16 +31,22 @@ MonoBehaviour:
     instantiationMode: 0
   - dependency: {fileID: 11400000, guid: 02f287c6ebb4c4a46be15505176a3e43, type: 2}
     instantiationMode: 1
+  - dependency: {fileID: 7400000, guid: e45197787f37a9c48894d369f12f11c6, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 9100000, guid: fefcf5a315ff24e40924ba7914b7e6f9, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 7400000, guid: 01145521e67a6c44b9902ad5895da906, type: 2}
+    instantiationMode: 0
   - dependency: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 11400000, guid: 023b03f5a4fd2c044abb082987890a70, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 1feb8a21863202546800532dc82c12f8, type: 3}
     instantiationMode: 0
-  - dependency: {fileID: 2800000, guid: cc0fe23cae44cf14ca2b76fcc32bb99a, type: 3}
-    instantiationMode: 0
   - dependency: {fileID: 11400000, guid: 3371bf1286c9bb4419060cddd2e1642c, type: 2}
     instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: cc0fe23cae44cf14ca2b76fcc32bb99a, type: 3}
+    instantiationMode: 0
   - dependency: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 11400000, guid: cc810f213549a0943be2837c9f9e4419, type: 2}
@@ -47,8 +55,6 @@ MonoBehaviour:
     instantiationMode: 0
   - dependency: {fileID: 11400000, guid: 5ff59c0c8d18e5e46b726150402ac305, type: 2}
     instantiationMode: 1
-  - dependency: {fileID: 1599677001162314918, guid: 76fcc1a4e5864c648939c6d0dacefe9b, type: 3}
-    instantiationMode: 0
   - dependency: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     instantiationMode: 1
   templatePipeline: {fileID: 0}
